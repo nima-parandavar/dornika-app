@@ -61,13 +61,13 @@ class RepeatedQr:
         cw = cws[sec]
 
         main_dic = {}
-        for counter, val in enumerate(pw):
-            main_dic[val.value] = counter + 1
+        for parent_qr in range(len(pw)):
+            main_dic[str(pw[parent_qr].value)] = parent_qr + 1
 
 
         sec_code_list = []
-        for sec_code in cw:
-            sec_code_list.append(sec_code.value)
+        for child_qr in range(len(cw)):
+            sec_code_list.append(str(cw[child_qr].value))
 
         # Load new excell
         workbook = Workbook()
@@ -156,12 +156,12 @@ class RepeatedQr:
         cw = cws[sec]
 
         main_dic = {}
-        for index, val in enumerate(pw):
-            main_dic[val.value] = index + 1
+        for parent_qr in range(len(pw)):
+            main_dic[str(pw[parent_qr].value)] = parent_qr + 1
 
         sec_code_list = []
-        for code in cw:
-            sec_code_list.append(code.value)
+        for child_qr in range(len(cw)):
+                sec_code_list.append(str(cw[child_qr].value))
 
         workbook = Workbook()
         worksheet = workbook.active
