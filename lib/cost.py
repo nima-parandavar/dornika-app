@@ -38,13 +38,17 @@ class Compare:
             costs = columns.get(code)
             try:
                 if int(costs[0]) > int(costs[1]):
-                    self.decrese_cost[code] = costs
-                elif int(costs[0]) < int(costs[1]):
                     self.increse_cost[code] = costs
+
+                elif int(costs[0]) < int(costs[1]):
+                    self.decrese_cost[code] = costs
+
                 else:
                     self.const_cost[code] = costs
+
             except ValueError:
                 pass
+
 
     def save_increse(self, file):
         increse_cost = self.increse_cost
@@ -130,6 +134,7 @@ class CostGUI:
         ttk.Button(self.master, text="انجلم عملیات", command=self.do_func).place(x=10, y=350)
 
     def do_func(self):
+
         column_one = self.column_one.get().upper()
         column_two = self.column_two.get().upper()
         barcode = self.barcode.get().upper()
@@ -139,17 +144,18 @@ class CostGUI:
         cmpr = Compare(file_dir, column_one, column_two, barcode)
         cmpr.compare()
 
-        if self.var.get() == 1:    
+        if self.var.get() == 1:
             save_dir = asksaveasfilename(title="ذخیره فایل ...", filetypes=(("Excell", "*.xlsx"),("All", "*.*")))
-            cmpr.save_increse(save_dir)
+            cmpr.save_increse(save_dir + ".xlsx")
             messagebox.showinfo("", "عملیات انجام شد")
-        elif self.var == 2:
+
+        elif self.var.get() == 2:
             save_dir = asksaveasfilename(title="ذخیره فایل ...", filetypes=(("Excell", "*.xlsx"),("All", "*.*")))
-            cmpr.save_increse(save_dir)
+            cmpr.save_decrese(save_dir + ".xlsx")
             messagebox.showinfo("", "عملیات انجام شد")
 
         else:
             save_dir = asksaveasfilename(title="ذخیره فایل ...", filetypes=(("Excell", "*.xlsx"),("All", "*.*")))
-            cmpr.save_const(save_dir)
+            cmpr.save_const(save_dir + ".xlsx")
             messagebox.showinfo("", "عملیات انجام شد")
 
