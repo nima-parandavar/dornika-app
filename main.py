@@ -6,7 +6,7 @@ from lib.cost import CostGUI
 
 root = Tk()
 root.title("Dornika Market")
-root.geometry("700x500+10+10")
+root.geometry("1000x500+10+10")
 widget = GUI()
 
 
